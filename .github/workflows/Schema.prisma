@@ -1,0 +1,15 @@
+model Disease {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  symptoms    String[]
+  treatments  Json     // Structured treatment data
+  prevalence  Json     // Africa-specific stats
+  whoLink     String?
+  cdcLink     String?
+  africaCDC   String?
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+  @@index([name])
+  @@fulltext([description, symptoms])
+}
